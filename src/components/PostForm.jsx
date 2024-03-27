@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-const PostForm = () => {
+// eslint-disable-next-line react/prop-types
+const PostForm = ({onSubmit, initialValue}) => {
   const [post, setPost] = useState({
-    title: "",
-    body: "",
+    title: initialValue?.title || "",
+    body: initialValue?.body || "",
   });
   const handleInputChange = (e) => {
     setPost({
@@ -13,7 +15,8 @@ const PostForm = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(post);
+    // console.log(post);
+    onSubmit(post);
     setPost({
         title: "",
         body: ""
